@@ -1,0 +1,119 @@
+@font-face {
+  font-family: "Varela Round";
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/VarelaRound-Regular.ttf') format('truetype');
+}
+
+:root {
+  --primary-color: #c1c7d2;
+  --accent-color: #ffb300;
+  --bg-color: #333845;
+}
+
+body, html {
+  height: 100%;
+}
+
+html {
+  font-family: "Varela Round", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--primary-color);
+  background-color: var(--bg-color);
+}
+
+*, ::after, ::before {
+  box-sizing: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.not-found {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.button {
+  font-family: inherit;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent-color);
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.8;
+}
+
+.button:active {
+  opacity: 0.5;
+}
+
+.link {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.link:hover,
+.link:focus {
+  opacity: 0.8;
+}
+
+.link:active {
+  opacity: 0.5;
+}
+
+
+.user-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.search-form {
+  display: flex;
+  margin-bottom: 32px;
+  gap: 16px;
+}
+
+.search-form__input {
+  flex-grow: 1;
+  padding: 8px;
+  color: inherit;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  background-color: transparent;
+}
+
+.user-card {
+  padding: 16px;
+  outline: 1px dashed lime;
+}
