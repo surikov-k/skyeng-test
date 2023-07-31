@@ -21,6 +21,7 @@ html {
 }
 
 body {
+  min-width: 380px;
   margin: 0;
   color: var(--primary-color);
   background-color: var(--bg-color);
@@ -114,6 +115,29 @@ body {
 }
 
 .user-card {
-  padding: 16px;
-  outline: 1px dashed lime;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background-color: #272c36;
+  gap: 16px;
+}
+
+.user-card__avatar {
+  width: 25%;
+}
+
+.user-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.user-card__info {
+  padding: 8px;
+}
+
+.user-card__title {
+  font-size: 24px;
+  margin: 0 0 8px;
 }

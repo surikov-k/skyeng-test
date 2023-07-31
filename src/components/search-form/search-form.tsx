@@ -1,22 +1,11 @@
 import { useState } from 'react';
-import { ApiResponse, User } from '../../types';
+import { useAppDispatch } from '../../hooks';
+import { fetchUserAction } from '../../store/api-actions';
 
-interface SearchFormProps {
-  setUsers: (users: User[]) => void;
-}
-
-export function SearchForm({ setUsers }: SearchFormProps): JSX.Element {
+export function SearchForm(): JSX.Element {
+  const dispatch = useAppDispatch();
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const handleSearch = async (): Promise<void> => {
-    try {
-      const response = await fetch(`https://api.github.com/search/users?q=${searchQuery}`);
-      const data = await response.json() as ApiResponse;
-      setUsers(data.items || []);
-    } catch (error) {
-      // console.error(error);
-    }
-  };
 
   return (
     <div className="search-form">
@@ -30,7 +19,7 @@ export function SearchForm({ setUsers }: SearchFormProps): JSX.Element {
       <button
         className="button search-form__button"
         onClick={() => {
-          handleSearch();
+          dispatch(fetchUserAction(searchQuery));
         }}
       >Search
       </button>
