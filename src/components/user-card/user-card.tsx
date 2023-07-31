@@ -22,7 +22,7 @@ export function UserCard({ user }: UserCardProps): JSX.Element {
         <h3 className="user-card__title">{user.login}</h3>
         <Link
           className="link user-card__link"
-          to={AppRoute.Details.replace(':id', `${user.id}`)}
+          to={AppRoute.Details.replace(':login', `${user.login}`)}
         >Details
         </Link>
       </div>

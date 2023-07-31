@@ -1,5 +1,5 @@
 import { AppData, RequestStatus } from '../../types';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Namespace } from '../../constants';
 import { fetchUserAction } from '../api-actions';
 
@@ -8,12 +8,21 @@ const initialState: AppData = {
   total: 0,
   incompleteResults: false,
   status: RequestStatus.Idle,
+  currentPage: 1
 };
 
 export const appData = createSlice({
   name: Namespace.Data,
   initialState,
-  reducers: {},
+  reducers: {
+    setPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+    resetUsers(state) {
+      state.users = [];
+      state.total = 0;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchUserAction.pending, (state) => {
@@ -30,3 +39,5 @@ export const appData = createSlice({
       });
   }
 });
+
+export const { setPage, resetUsers } = appData.actions;

@@ -1,6 +1,6 @@
 export enum AppRoute {
   Root = '/',
-  Details = 'user/:id',
+  Details = 'user/:login',
 }
 
 export const BASE_URL = 'https://api.github.com/search/';
@@ -14,3 +14,5 @@ export enum Namespace {
   App = 'APP',
   Data = 'DATA',
 }
+
+export const USERS_PER_PAGE = 30;

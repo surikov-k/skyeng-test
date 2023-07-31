@@ -1,28 +1,40 @@
-import { useState } from 'react';
-import { useAppDispatch } from '../../hooks';
-import { fetchUserAction } from '../../store/api-actions';
+import { ChangeEvent } from 'react';
+import { SearchQueryParams, SortingOrder } from '../../types';
+import { Sorting } from '../sorting/sorting';
+import { Button } from '../button/button';
 
-export function SearchForm(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const [searchQuery, setSearchQuery] = useState<string>('');
+interface SearchFormProps {
+  params: SearchQueryParams;
+  onQueryChange: (query: string) => void;
+  onOrderChange: (order: SortingOrder) => void;
+  onSubmit: () => void;
+}
 
+export function SearchForm({ params, onQueryChange, onOrderChange, onSubmit }: SearchFormProps): JSX.Element {
+
+
+  const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onQueryChange(event.target.value);
+  };
 
   return (
     <div className="search-form">
       <input
         className="search-form__input"
         type="text"
-        value={searchQuery}
-        onChange={(event) => setSearchQuery(event.target.value)}
+        value={params.query}
+        onChange={handleQueryChange}
         placeholder="Enter a query string"
       />
-      <button
-        className="button search-form__button"
-        onClick={() => {
-          dispatch(fetchUserAction(searchQuery));
-        }}
-      >Search
-      </button>
+      <Sorting
+        order={params.order}
+        onChange={onOrderChange}
+      />
+      <Button
+        text="Search"
+        onClick={onSubmit}
+        disabled={params.query === ''}
+      />
     </div>
   );
 }
