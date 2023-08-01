@@ -1,13 +1,15 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchUser } from '../../store/api-actions';
 import { getStatus, getUserDetails } from '../../store/app-data/selectors';
 import { RequestStatus } from '../../types';
 import { DetailsItem, Error, Loading } from '../../components';
+import { Button } from '../../components/button/button';
 
 export function Details(): JSX.Element | null {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { login } = useParams();
   const status = useAppSelector(getStatus);
   const details = useAppSelector(getUserDetails);
@@ -46,6 +48,12 @@ export function Details(): JSX.Element | null {
     <section className="details">
       {status === RequestStatus.Idle && (
         <>
+          <p>
+            <Button
+              text="Go Back"
+              onClick={() => navigate(-1)}
+            />
+          </p>
           <h2>Details page for {login}</h2>
           <img
             className="details__img"
@@ -86,6 +94,12 @@ export function Details(): JSX.Element | null {
               </a>
             </div>
           )}
+          <p>
+            <Button
+              text="Go Back"
+              onClick={() => navigate(-1)}
+            />
+          </p>
         </>
       )}
     </section>

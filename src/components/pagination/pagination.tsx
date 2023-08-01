@@ -30,7 +30,7 @@ export function Pagination({ page, onChange, disabled = false }: PaginatorProps)
           <Button
             text="&gt;"
             onClick={() => onChange(Math.min(total, page + 1))}
-            disabled={disabled && page === total}
+            disabled={disabled || page === total}
           />
         </li>
       </ul>
