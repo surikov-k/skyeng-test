@@ -1,4 +1,6 @@
 export * from './app/app';
+export * from './details-item/details-item';
+export * from './error/error';
 export * from './loading/loading';
 export * from './main/main';
 export * from './pagination/pagination';

@@ -3,10 +3,11 @@ export enum AppRoute {
   Details = 'user/:login',
 }
 
-export const BASE_URL = 'https://api.github.com/search/';
+export const BASE_URL = 'https://api.github.com/';
 export const REQUEST_TIMEOUT = 5000;
 
 export enum ApiRoute {
+  SearchUsers = 'search/users',
   Users = 'users',
 }
 

@@ -1,13 +1,15 @@
 import { AppData, RequestStatus } from '../../types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Namespace } from '../../constants';
-import { fetchUserAction } from '../api-actions';
+import { fetchUser, searchUsers } from '../api-actions';
 
 const initialState: AppData = {
   users: [],
+  details: null,
   total: 0,
   incompleteResults: false,
   status: RequestStatus.Idle,
+  error: '',
   currentPage: 1
 };
 
@@ -21,23 +23,48 @@ export const appData = createSlice({
     resetUsers(state) {
       state.users = [];
       state.total = 0;
+    },
+    resetError(state) {
+      state.status = RequestStatus.Idle;
+      state.error = '';
     }
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchUserAction.pending, (state) => {
+      .addCase(searchUsers.pending, (state) => {
         state.status = RequestStatus.Loading;
       })
-      .addCase(fetchUserAction.fulfilled, (state, action) => {
+      .addCase(searchUsers.fulfilled, (state, action) => {
         state.users = action.payload.items;
         state.total = action.payload.total_count;
         state.incompleteResults = action.payload.incomplete_results;
         state.status = RequestStatus.Idle;
+        state.error = '';
       })
-      .addCase(fetchUserAction.rejected, (state) => {
+      .addCase(searchUsers.rejected, (state, action) => {
         state.status = RequestStatus.Error;
+        if (action.payload) {
+          state.error = action.payload;
+        }
+      });
+
+    builder
+      .addCase(fetchUser.pending, (state) => {
+        state.status = RequestStatus.Loading;
+        state.error = '';
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.details = action.payload;
+        state.status = RequestStatus.Idle;
+        state.error = '';
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.status = RequestStatus.Error;
+        if (action.payload) {
+          state.error = action.payload;
+        }
       });
   }
 });
 
-export const { setPage, resetUsers } = appData.actions;
+export const { setPage, resetUsers, resetError } = appData.actions;

@@ -26,10 +26,12 @@ export function SearchForm({ params, onQueryChange, onOrderChange, onSubmit }: S
         onChange={handleQueryChange}
         placeholder="Enter a query string"
       />
+
       <Sorting
         order={params.order}
         onChange={onOrderChange}
       />
+
       <Button
         text="Search"
         onClick={onSubmit}
