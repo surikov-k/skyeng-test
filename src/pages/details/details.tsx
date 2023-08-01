@@ -44,6 +44,17 @@ export function Details(): JSX.Element | null {
     url,
   } = details;
 
+  const titles: Record<string, string> = {
+    bio: 'Bio',
+    company: 'Company',
+    createdAt: 'Created At',
+    email: 'email',
+    followers: 'Followers',
+    following: 'Following',
+    location: 'Location',
+    publicRepos: 'Public Repos',
+  };
+
   return (
     <section className="details">
       {status === RequestStatus.Idle && (
@@ -73,11 +84,11 @@ export function Details(): JSX.Element | null {
                 following,
                 location,
                 publicRepos,
-              }).map(([title, info]) => !!info &&
+              }).map(([key, value]) => !!value &&
                 <DetailsItem
-                  key={title}
-                  title={title}
-                  info={(info).toString()}
+                  key={key}
+                  title={titles[key]}
+                  info={(value).toString()}
                 />
               )
             }

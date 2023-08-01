@@ -69,7 +69,7 @@ export const fetchUser = createAsyncThunk<UserDetails, string, {
       url: data.html_url,
       name: data.name,
       publicRepos: data.public_repos,
-      createdAt: data.created_at,
+      createdAt: new Date(data.created_at).toLocaleString(),
     };
 
     return userDetails;
