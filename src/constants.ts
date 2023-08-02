@@ -1,6 +1,7 @@
 export enum AppRoute {
   Root = '/',
   Details = 'user/:login',
+  Me = 'user/surikov-k',
 }
 
 export const BASE_URL = 'https://api.github.com/';

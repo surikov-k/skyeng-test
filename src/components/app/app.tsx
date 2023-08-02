@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Details, NotFound, Search } from '../../pages';
 import { AppRoute } from '../../constants';
 import { Main } from '../main/main';
+import { Footer } from '../footer/footer';
 
 export function App(): JSX.Element {
   return (
@@ -20,6 +21,7 @@ export function App(): JSX.Element {
           element={<NotFound/>}
         />
       </Routes>
+      <Footer/>
     </Main>
   );
 }

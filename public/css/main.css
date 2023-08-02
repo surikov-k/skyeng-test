@@ -47,7 +47,10 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   max-width: 1024px;
+  height: 100vh;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -107,9 +110,10 @@ body {
 
 
 .user-list {
-  margin: 0;
+  margin: 0 0 32px;
   padding: 0;
   list-style: none;
+
 }
 
 .search-form {
@@ -131,7 +135,6 @@ body {
 .sorting {
   font-size: 12px;
   line-height: 12px;
-  /*width: 150px;*/
   cursor: pointer;
   text-align: right;
   text-transform: uppercase;
@@ -188,7 +191,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 64px;
+  padding-bottom: 32px;
 }
 
 .details__info {
@@ -238,4 +241,11 @@ body {
 
 .error__title {
   color: var(--error);
+}
+
+.footer {
+  margin-top: auto;
+  padding: 16px 0;
+  text-align: center;
+  border-top: 1px solid var(--bg-grey);
 }
