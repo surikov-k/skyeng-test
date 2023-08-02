@@ -191,7 +191,9 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex-grow: 1;
   padding-bottom: 32px;
+
 }
 
 .details__info {

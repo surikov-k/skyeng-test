@@ -33,6 +33,7 @@ export function SearchForm({ params, onQueryChange, onOrderChange, onSubmit }: S
         onChange={handleQueryChange}
         onKeyDown={handleKeyDown}
         placeholder="Enter a query string"
+        data-testid="search-input"
       />
 
       <Sorting

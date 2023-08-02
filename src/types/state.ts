@@ -10,7 +10,6 @@ export type AppData = {
   incompleteResults: boolean;
   status: RequestStatus;
   error: string;
-  currentPage: number;
 }
 
 export type State = ReturnType<typeof store.getState>;

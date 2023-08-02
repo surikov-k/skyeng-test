@@ -1,5 +1,5 @@
 import { AppData, RequestStatus } from '../../types';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { Namespace } from '../../constants';
 import { fetchUser, searchUsers } from '../api-actions';
 
@@ -10,16 +10,12 @@ const initialState: AppData = {
   incompleteResults: false,
   status: RequestStatus.Idle,
   error: '',
-  currentPage: 1
 };
 
 export const appData = createSlice({
   name: Namespace.Data,
   initialState,
   reducers: {
-    setPage(state, action: PayloadAction<number>) {
-      state.currentPage = action.payload;
-    },
     resetUsers(state) {
       state.users = [];
       state.total = 0;
@@ -67,4 +63,4 @@ export const appData = createSlice({
   }
 });
 
-export const { setPage, resetUsers, resetError } = appData.actions;
+export const { resetUsers, resetError } = appData.actions;

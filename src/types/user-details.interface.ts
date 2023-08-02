@@ -8,8 +8,8 @@ export interface UserDetails {
   location: string;
   email: string;
   bio: string;
-  publicRepos: string;
-  followers: string;
-  following: string;
+  publicRepos: number;
+  followers: number;
+  following: number;
   createdAt: string;
 }

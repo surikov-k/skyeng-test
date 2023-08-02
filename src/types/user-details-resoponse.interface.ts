@@ -8,8 +8,8 @@ export interface UserDetailsResponse {
   location: string;
   email: string;
   bio: string;
-  public_repos: string;
-  followers: string;
-  following: string;
+  public_repos: number;
+  followers: number;
+  following: number;
   created_at: string;
 }

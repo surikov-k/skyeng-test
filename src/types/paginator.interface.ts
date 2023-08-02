@@ -1,4 +1,4 @@
 export interface Paginator {
-  current: number;
+  current?: number;
   total: number;
 }
